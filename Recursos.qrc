@@ -1,0 +1,15 @@
+<RCC>
+    <qresource prefix="/">
+        <file>Imagenes/Beso.png</file>
+        <file>Imagenes/Juntos.png</file>
+        <file>Imagenes/ninjamayor.png</file>
+        <file>Imagenes/Personajes.png</file>
+        <file>Imagenes/Pucca.png</file>
+        <file>Imagenes/Fondo.jfif</file>
+        <file>Imagenes/shuriken.png</file>
+        <file>Imagenes/ninja.jpg</file>
+        <file>Imagenes/pucaperfecta.png</file>
+        <file>Imagenes/ninjadef.png</file>
+        <file>Imagenes/abyo.png</file>
+    </qresource>
+</RCC>
