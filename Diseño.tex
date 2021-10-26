@@ -1,0 +1,65 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{listings}
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+\usepackage{cite}
+
+\begin{document}
+
+\begin{titlepage}
+    \begin{center}
+        \vspace*{1cm}
+            
+        \Huge
+        \textbf{Diseño proyecto final}
+            
+        \vspace{0.5cm}
+        \LARGE
+        Fall in love by Pucca
+            
+        \vspace{1.5cm}
+            
+        \textbf{Ana María Ardila Ariza}
+            
+        \vfill
+            
+        \vspace{0.8cm}
+            
+        \Large
+        Despartamento de Ingeniería Electrónica y Telecomunicaciones\\
+        Universidad de Antioquia\\
+        Medellín\\
+        Octubre de 2021
+            
+    \end{center}
+\end{titlepage}
+
+\tableofcontents
+\newpage
+\section{Sección introductoria}\label{intro}
+A continuación, se expndrá el modelamiento de objetos y la planificación de fechas para este proyecto final llamado Fall in love by Pucca
+
+\section{Sección de contenido} \label{contenido}
+\subsection{Modelamiento de objetos}
+Este juego tendrá uso de diferentes tipos de clases, entre estas existirán las siguientes:\\\\
+.Clases Enemigos:\\
+Estas serán 2, una manejando a los ninjas y otra manejando sus movimientos y acciones, esta ultima heredará a la clase ninja ya que los atributos se definen en esta. Seran las encargadas de apuntar, disparar y darle su respectiva imagen a los enemigos. Tambien existe una clase para la municion la cual será especificamente para las balas y cuando estas colisionen con el jugador, a parte de tambien darle su respectiva imagen.\\\\
+.Clase Jugador:\\
+Existe una clase jugador, la cual se encarga de manejar todos los atributos, acciones y movimientos  que tenga el jugador principal, su imagen y aspecto , sus timer, etc.\\\\
+.Clase MainWindow:\\
+Esta es la encargada de mostrar en pantalla todo lo que hemos reunido en las anteriores clases, aqui se crean funciones importantes como lo son el KeyPressEvent para manejar tanto el primer jugador como el segundo, esta va a hacer interaccion con todas las clases anteriores y maneja algunos timer, el fondo del juego, las dimensiones de la scena, basicamente toda la parte visible hace parte de esta clase.\\\\
+.Clase de utilidades:\\
+Esta es una pequeña clase en la cual se ponen las Macros, funciones, definiciones, que se necesitan en mas de un lugar, para que asi sea mucho mas facil y resumida su invicación al solo incluir esta clase donde sea necesario.\\\\\\\\\\\\\\
+
+\subsection{Planificacion de fechas}
+Se tiene el siguiente cronograma a seguir para el desarrollo de este juego:\\\\\\
+19/10/21 - 21/10/21 = Creación clases enemigos, jugador, y MainWindow, con sus respectivas inicializaciones, funciones publicas, Set y get y funciones publicas slots necesarias para empezar.\\\\
+22/10/21 - 23/10/21 = Funciones Move de jugador y enemigos, creación de la clase municion para manejar los proyectiles, darle aspcto a el jugador, los enemigos y las balas, inicio de la funcion apuntar.\\\\
+24/10/21 - 26/10/21 = Funciones completas de apuntar, disparar, movimientos de teclas de el primer jugador y segundo funcionando, se añade otro ninja al otro lado y modificacion de las funciones para que dispare. Correccionde errores y Focus implementado.\\\\
+27/10/21 - 28/10/21 = Colisiones implementadas, Vidas hechas y puntaje puestos en el MainWindow, creacion de niveles y Login y register creados con almacenamiento de datos, Finalizacion del juego.\\\\
+29/10/21 = creacion de trailer, y entrega del juego terminado y funcionando.\\\\ 
+
+
+\end{document}
