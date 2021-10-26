@@ -3,31 +3,35 @@
 #include <QObject>
 #include <QGraphicsPixmapItem>
 #include <QTimer>
+#include <utilidades.h>
+#include <QGraphicsScene>
 
-template <typename T>
-struct pair{ //
-    T x,y;
-};
-class Player : public QObject, public QGraphicsPixmapItem {
+class Player : public QObject, public IDs {
     Q_OBJECT
 public:
 
     void starttimer(int);
     void stoptimer();
     void setTiempo(double t);
-    void setGravedad(float g);
-    void setAceleracion(float ax,float ay);
-    void setVelocidad(float vx,float vy);
+    void setGravedad(double g);
+    void setAceleracion(double ax,double ay);
+    void setVelocidad(double vx,double vy);
     void setBalas(uint b);
+    void setTArea(const uchar &type);
+    void setCenter(const bool &IsCenter);
 
+
+    double getTArea() const;
     double GetTiempo();
-    float GetGravedad();
-    pair<float> GetAceleracion();
-    pair<float> GetVelocidad();
+    double GetGravedad();
+    P::pair<double> GetAceleracion();
+    P::pair<double> GetVelocidad();
     int GetBalas();
 
-    Player(QGraphicsItem* = nullptr);// recibe una direccion de memoria(siempre va)
+    Player(bool IsCenter = false, QGraphicsItem* = nullptr);// recibe una direccion de memoria(siempre va)
     ~Player();
+
+
 
 public slots://crea tipo vacios
 
@@ -36,11 +40,16 @@ public slots://crea tipo vacios
 private:
 
     QTimer* Timed;
-    float Gravedad;
-    pair<float> Velocidad;
-    pair<float> Aceleracion;
+    double Gravedad;
+    P::pair<double> Velocidad;
+    P::pair<double> Aceleracion;
     double Tiempo;
     uint Balas;
+    double arrastre, Mass;
+    double y_0;
+    uchar TArea;
+    double densidad;
+    bool Center;
 
 
 };
