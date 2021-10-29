@@ -16,25 +16,23 @@ public:
     Ninja();
     ~Ninja();
 
-    float getGravedad() const;
     void setGravedad(float value);
-
-    float getVelocidad() const;
     void setVelocidad(float value);
-
-    float getAceleracion() const;
     void setAceleracion(float value);
-
-    string getMunicion() const;
     void setMunicion(const string &value);
-
-    string getImagen() const;
     void setImagen(const string &value);
+
+    float getGravedad() const;
+    float getVelocidad() const;
+    float getAceleracion() const;
+    string getMunicion() const;
+    string getImagen() const;
 
 private:
     float Gravedad;
     float Velocidad;
     float Aceleracion;
+
     string municion;
     string imagen;
 
@@ -44,6 +42,8 @@ class Shuriken : public Ninja
 {
 Q_OBJECT
 public:
+    Shuriken(int distancia, double x, double y,QGraphicsItem* = nullptr);
+    ~Shuriken();
     void starttimer(int);
     void stoptimer();
 
@@ -51,11 +51,6 @@ public:
     void stoptimer2();
 
     void morir();
-
-
-    Shuriken();
-    ~Shuriken();
-    Shuriken(double x, double y,QGraphicsItem* = nullptr);
     void setP(QGraphicsItem *value);
 
 public slots:
@@ -67,9 +62,12 @@ private:
     QTimer* Timed1;
     QTimer* Timed2;
     QGraphicsItem *P;
+
     double densidad;
     double LTArea, STArea, MTArea, Mass, arrastre;
     double y_0;
+
+    int distancia;
 
 
 
