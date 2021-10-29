@@ -13,7 +13,6 @@ class municion :  public QObject,public IDs
 Q_OBJECT
 public:
     municion(double velocidadx,double velocidady, int ID1 ,QGraphicsItem* = nullptr);
-    municion();
     ~municion();
 
     P::pair<double> getVelocidad() const;
