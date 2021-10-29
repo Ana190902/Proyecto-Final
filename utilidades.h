@@ -5,10 +5,11 @@
 #include <QGraphicsPixmapItem>
 #include <QGraphicsScene>
 #include <math.h>
+#include <string.h>
 
-#define e 2.72
+#define euler 2.72
 #define pi 3.14
-
+using std::string;
 namespace P{
     template <typename T>
     struct pair{ //
@@ -23,9 +24,4 @@ public:
     }
     ~IDs()=default;
 };
-
-
-
-
-
 #endif // UTILIDADES_H
