@@ -1,59 +1,80 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
-MainWindow* MainWindow::p_game = nullptr;
+//MainWindow* MainWindow::p_game = nullptr;
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent) , ui(new Ui::MainWindow)
 
 {
     ui->setupUi(this);
-    view = new QGraphicsView(this);
-    Scene = new QGraphicsScene(this);
-    srand(unsigned(time(nullptr)));
+    Manager = new fmanager("Data.txt");
 
-    view->resize(1080,720);
-    //resize();
-    Scene->setSceneRect(0, 0, 1080, 10000); // (-960, -540, 960, 540);
-    //setBackgroundBrush(QBrush(Qt::white));
-    view->setBackgroundBrush(QBrush(QImage(":/Imagenes/Fondo.jfif")));
-    view->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-    view->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    if(/*DISABLES CODE*/(false)){
+        view = new QGraphicsView(this);
+        Scene = new QGraphicsScene(this);
+        srand(unsigned(time(nullptr)));
 
-    view->setScene(Scene);
+        view->resize(1080,720);
+        //resize();
+        Scene->setSceneRect(0, 0, 1080, 10000); // (-960, -540, 960, 540);
+        //setBackgroundBrush(QBrush(Qt::white));
+        view->setBackgroundBrush(QBrush(QImage(":/Imagenes/Fondo.jfif")));
+        view->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+        view->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+        view->setScene(Scene);
 
-    Player1 = new Player();
-    Player1->setPos(400,10);
-    Scene->addItem(Player1);
-    Player1->starttimer(100);
-    Player1->setCenter(true);
+        Players.push_back(new Player());
+        Players[0]->setPos(400,10);
+        Scene->addItem(Players[0]);
+        Players[0]->starttimer(100);
+        Players[0]->setCenter(true);
 
-    view->ensureVisible(Player1);
+        view->ensureVisible(Players[0]);
 
+    /*
+        Players.push_back(new Player());
+        Players[1]->setPos(400,10);
+        Players[1]->setPixmap(QPixmap(":/Imagenes/abyo.png").scaled(QSize(150, 200)));
+        Scene->addItem(Players[1]);
+        Players[1]->starttimer(100);
 
-    Player2 = new Player();
-    Player2->setPos(400,10);
-    Player2->setPixmap(QPixmap(":/Imagenes/abyo.png").scaled(QSize(150, 200)));
-    Scene->addItem(Player2);
-    Player2->starttimer(100);
+    */
+        Shuriken1= new Shuriken(400,0,0);
+        Scene->addItem(Shuriken1);
+        Shuriken1->setP(Players[0]);
+        Shuriken1->starttimer(100);
+        Shuriken1->starttimer2(3000);
 
+        Shuriken1= new Shuriken(500,720,0);
+        Scene->addItem(Shuriken1);
+        Shuriken1->setP(Players[0]);
+        Shuriken1->starttimer(100);
+        Shuriken1->starttimer2(2000);
 
-    Shuriken1= new Shuriken(0,0);
-    Scene->addItem(Shuriken1);
-    Shuriken1->setP(Player1);
-    Shuriken1->starttimer(100);
-    Shuriken1->starttimer2(1000);
+        vida= new Vidas(500,720);
+        Scene->addItem(vida);
 
-    Shuriken1= new Shuriken(720,0);
-    Scene->addItem(Shuriken1);
-    Shuriken1->setP(Player1);
-    Shuriken1->starttimer(100);
-    Shuriken1->starttimer2(1000);
+        score = new Score(1,"Puntaje: ",{0,0});
+        score->setPos(score->x(), score->y());
+        score->setP(Players[0]);
+        Scene->addItem(score);
+        score->starttimer(10);
 
-    p_game = this;
-    show();
+        vidas = new Score(0,"Vidas: ",{720,0});
+        vidas->setPos(score->x(), score->y());
+        vidas->setP(Players[0]);
+        Scene->addItem(vidas);
+        vidas->starttimer2(10);
 
+        //EnableCollitions();
 
+        Players[0]->TimeStart(500);
+
+        //p_game = this;
+        show();
+
+    }
 }
 
 MainWindow::~MainWindow()
@@ -66,43 +87,9 @@ void MainWindow::mouseMoveEvent(QMouseEvent *event){return;}
 //Movimiento fisico: cambio de area transversal para que tenga resistencia al aire
 void MainWindow::keyPressEvent(QKeyEvent *event)
 {
-    if(event->key()==Qt::Key_A){
-        Player1->setVelocidad(-3, Player1->GetVelocidad().y);
-        Player1->setTArea(2);
-    }
-    else if(event->key()==Qt::Key_D){
-        Player1->setVelocidad(3,Player1->GetVelocidad().y);
-        Player1->setTArea(2);
-    }   
-    else if(event->key()==Qt::Key_W){
-        Player1->setTArea(0);
-    }
-    else if(event->key()==Qt::Key_S){
-        Player1->setTArea(1);
-    }
-
-    //segundo jugador
-    else if(event->key()==Qt::Key_J){
-        Player2->setVelocidad(-3, Player2->GetVelocidad().y);
-        Player2->setTArea(2);
-    }
-    else if(event->key()==Qt::Key_L){
-        Player2->setVelocidad(3,Player2->GetVelocidad().y);
-        Player2->setTArea(2);
-    }
-    else if(event->key()==Qt::Key_I){
-        Player2->setTArea(0);
-    }
-    else if(event->key()==Qt::Key_K){
-        Player2->setTArea(1);
-    }
-
-
-}
-
-MainWindow *MainWindow::getpointer()
-{
-    return p_game;
+    RLWindow = new Register(true, this);
+    RLWindow->show();
+    this->hide();
 }
 
 
