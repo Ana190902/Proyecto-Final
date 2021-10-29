@@ -18,19 +18,31 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     Player.cpp \
     enemigos.cpp \
+    fmanager.cpp \
+    gamewindow.cpp \
     main.cpp \
     mainwindow.cpp \
-    municion.cpp
+    municion.cpp \
+    register.cpp \
+    score.cpp \
+    vidas.cpp
 
 HEADERS += \
     Player.h \
     enemigos.h \
+    fmanager.h \
+    gamewindow.h \
     mainwindow.h \
     municion.h \
-    utilidades.h
+    register.h \
+    score.h \
+    utilidades.h \
+    vidas.h
 
 FORMS += \
-    mainwindow.ui
+    gamewindow.ui \
+    mainwindow.ui \
+    register.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
