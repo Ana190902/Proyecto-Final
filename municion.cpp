@@ -28,7 +28,6 @@ void municion::setVelocidad(const P::pair<double> &value)
 }
 void municion::move()
 {
-
     setPos(x()+velocidad.x,y()+velocidad.y);
     velocidad.y *= 0.97;
     std::vector<QGraphicsItem* > Colliding_Item;
@@ -49,9 +48,6 @@ void municion::move()
                 //Delete
                 delete Colliding_Item[i];
                 delete this;
-
             }
         }
-
 }
-
